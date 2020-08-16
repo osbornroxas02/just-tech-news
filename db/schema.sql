@@ -1,11 +1,6 @@
 DROP DATABASE IF EXISTS just_tech_news_db;
 CREATE DATABASE just_tech_news_db;
 
-CREATE SCHEMA users;
-
-
-
-
 INSERT INTO users (username, email, password)
 VALUES (
     "Lernantino",
