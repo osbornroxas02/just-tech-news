@@ -1,7 +1,8 @@
 //this file is responsible for right now is importing the User model and exporting an object with it as a property
 const User = require("./User");
 const Post = require("./Post");
-const Vote = require('./Vote');
+const Vote = require("./Vote");
+const Comment = require("./Comment");
 
 // create associations: Posts
 User.hasMany(Post, {
@@ -9,7 +10,7 @@ User.hasMany(Post, {
 });
 
 Post.belongsTo(User, {
-    foreignKey: 'user_id',
+    foreignKey: 'user_id'
 });
 
 // create associations: Votes
@@ -42,6 +43,22 @@ Post.hasMany(Vote, {
     foreignKey: 'post_id'
 });
 
+// Links for comments
+Comment.belongsTo(User, {
+    foreignKey: 'user_id'
+});
+
+Comment.belongsTo(Post, {
+    foreignKey: 'post_id'
+});
+
+User.hasMany(Comment, {
+    foreignKey: 'user_id'
+});
+
+Post.hasMany(Comment, {
+    foreignKey: 'post_id'
+});
 
 
-module.exports = { User, Post, Vote };
+module.exports = { User, Post, Vote, Comment };
